@@ -1,0 +1,73 @@
+plugins {
+    id "com.android.application"
+}
+
+android {
+    namespace "com.hotelcolonial.comanda"
+    compileSdk 35
+
+    buildFeatures {
+        buildConfig true
+    }
+
+    flavorDimensions += "role"
+    productFlavors {
+        guest {
+            dimension "role"
+            applicationIdSuffix ".guest"
+            versionCode 5
+            versionName "1.0.4"
+            versionNameSuffix "-guest"
+            buildConfigField "String", "APP_MODE", '"guest"'
+        }
+        attendant {
+            dimension "role"
+            applicationIdSuffix ".attendant"
+            versionCode 5
+            versionName "1.0.4"
+            versionNameSuffix "-attendant"
+            buildConfigField "String", "APP_MODE", '"attendant"'
+        }
+    }
+
+    defaultConfig {
+        applicationId "com.hotelcolonial.comanda"
+        minSdk 23
+        targetSdk 28
+        versionCode 1
+        versionName "1.0.0"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    packaging {
+        jniLibs {
+            useLegacyPackaging true
+        }
+    }
+}
+
+android.applicationVariants.all { variant ->
+    variant.outputs.all {
+        if (project.hasProperty("apkOutputName")) {
+            outputFileName = project.property("apkOutputName")
+        }
+    }
+}
+
+configurations.configureEach {
+    exclude group: "org.jetbrains.kotlin", module: "kotlin-stdlib-jdk7"
+    exclude group: "org.jetbrains.kotlin", module: "kotlin-stdlib-jdk8"
+}
+
+dependencies {
+    implementation files("libs/e1-v1.0.6-release.aar")
+    implementation files("libs/minipdvm8.aar")
+    implementation "androidx.appcompat:appcompat:1.7.0"
+    implementation "androidx.startup:startup-runtime:1.1.1"
+    implementation "androidx.webkit:webkit:1.12.1"
+    implementation "com.google.zxing:core:3.4.0"
+}
