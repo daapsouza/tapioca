@@ -1,4 +1,4 @@
-# Comanda Virtual — Hotel Colonial Plaza
+# Comanda Virtual — Tapioca para Hotel
 
 Sistema de comandas para o café da manhã do **Hotel**, desenvolvido para operar em dois Mini PDVs Android Elgin M10. Os hóspedes criam os pedidos em um aparelho e o atendente recebe as comandas pela rede Wi-Fi local, organiza filas de preparo, imprime os pedidos e envia avisos para as TVs.
 
